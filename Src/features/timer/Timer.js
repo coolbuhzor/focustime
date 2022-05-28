@@ -42,40 +42,42 @@ export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
   };
 
   return (
-    <View styles={styles.container}>
-      <View style={styles.countdown}>
-        <Countdown
-          minutes={minutes}
-          isPaused={!isStarted}
-          onProgress={onProgress}
-          onEnd={onEnd}
-        />
+    <>
+      <View styles={styles.container}>
+        <View style={styles.countdown}>
+          <Countdown
+            minutes={minutes}
+            isPaused={!isStarted}
+            onProgress={onProgress}
+            onEnd={onEnd}
+          />
+        </View>
+        <View style={{ paddingTop: spacing.xxl }}>
+          <Text style={styles.text}>Focusing on : </Text>
+          <Text style={styles.task}>{focusSubject} </Text>
+        </View>
+        <View style={{ padding: spacing.lg }}>
+          <ProgressBar
+            color="#5e84e2"
+            style={{ height: 10 }}
+            progress={progress}
+          />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <Timing onChangeTime={changeTime} />
+        </View>
+        <View style={styles.countdown}>
+          {!isStarted ? (
+            <RoundedButton title="start" onPress={() => setIsStarted(true)} />
+          ) : (
+            <RoundedButton title="pause" onPress={() => setIsStarted(false)} />
+          )}
+        </View>
+        <View style={styles.clearSubject}>
+          <RoundedButton size={75} title="-" onPress={() => clearSubject()} />
+        </View>
       </View>
-      <View style={{ paddingTop: spacing.xxl }}>
-        <Text style={styles.text}>Focusing on : </Text>
-        <Text style={styles.task}>{focusSubject} </Text>
-      </View>
-      <View style={{ padding: spacing.lg }}>
-        <ProgressBar
-          color="#5e84e2"
-          style={{ height: 10 }}
-          progress={progress}
-        />
-      </View>
-      <View style={styles.buttonWrapper}>
-        <Timing onChangeTime={changeTime} />
-      </View>
-      <View style={styles.countdown}>
-        {!isStarted ? (
-          <RoundedButton title="start" onPress={() => setIsStarted(true)} />
-        ) : (
-          <RoundedButton title="pause" onPress={() => setIsStarted(false)} />
-        )}
-      </View>
-      <View style={styles.clearSubject}>
-        <RoundedButton size={75} title="-" onPress={() => clearSubject()} />
-      </View>
-    </View>
+    </>
   );
 };
 
