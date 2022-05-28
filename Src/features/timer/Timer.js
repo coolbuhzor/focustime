@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Text, StyleSheet, View, Vibration, Platform } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
-import { colors } from '../../utils/colors';
-import { spacing } from '../../utils/Sizes';
-import { Countdown } from '../../components/Countdown';
-import { RoundedButton } from '../../components/RoundedButton';
-import { useKeepAwake } from 'expo-keep-awake';
-import { Timing } from './Timing';
+import React, { useState } from "react";
+import { Text, StyleSheet, View, Vibration, Platform } from "react-native";
+import { ProgressBar } from "react-native-paper";
+import { colors } from "../../utils/colors";
+import { spacing } from "../../utils/Sizes";
+import { Countdown } from "../../components/Countdown";
+import { RoundedButton } from "../../components/RoundedButton";
+import { useKeepAwake } from "expo-keep-awake";
+import { Timing } from "./Timing";
 
 const defaultTime = 0.1;
 export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
@@ -18,7 +18,7 @@ export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
     setProgress(progress);
   };
   const vibrate = () => {
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === "ios") {
       const interval = setInterval(() => Vibration.vibrate(), 1000);
       setTimeout(() => clearInterval(interval), 10000);
       // Vibration.vibrate(10000)
@@ -87,25 +87,25 @@ const styles = StyleSheet.create({
 
   text: {
     color: colors.white,
-    textAlign: 'center',
+    textAlign: "center",
   },
   task: {
     color: colors.white,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
   countdown: {
     // flex: 0.5,
     marginTop: spacing.md,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonWrapper: {
     // flex: 0.5,
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 15,
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   clearSubject: {
     padding: spacing.md,
